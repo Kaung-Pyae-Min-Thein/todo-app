@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { AddButton, InputForm } from "../../components";
+import { Button, InputForm } from "../../components";
 import { Todo_style } from "./pagestyle";
 
 export const TodoPage = () => {
-  // const [todos, setTodos] = useState([]);
-
   const [todos, setTodos] = useState([]);
 
   const addTodo = (input) => {
@@ -12,14 +10,22 @@ export const TodoPage = () => {
       return [...prevTodos, input];
     });
   };
+
+  const deleteTodo = (id) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((item, index) => index !== id);
+    });
+  };
   console.log(todos);
   return (
     <Todo_style>
       <h1>Todo App</h1>
-      <AddButton />
+      <Button icon="add" />
       <ul>
         {todos.map((item, index) => (
-          <li key={index}>{item.todo}</li>
+          <li key={index}>
+            {item.todo} <Button icon="delete" />
+          </li>
         ))}
       </ul>
 

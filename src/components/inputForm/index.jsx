@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form_style } from "./formStyles";
 
 export const InputForm = ({ addTodo }) => {
   const [input, setInput] = useState({
@@ -31,23 +32,26 @@ export const InputForm = ({ addTodo }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        value={input.todo}
-        onChange={handleChange}
-        name="todo"
-        placeholder="Add your new todo"
-      />
-
-      <textarea
-        value={input.description}
-        onChange={handleChange}
-        name="description"
-        placeholder="Description"
-      ></textarea>
-      <button type="submit">Add</button>
-    </form>
+    <Form_style >
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          value={input.todo}
+          onChange={handleChange}
+          name="todo"
+          placeholder="Add your new todo"
+        />
+        <br />
+        <textarea
+          value={input.description}
+          onChange={handleChange}
+          name="description"
+          placeholder="Description"
+        ></textarea>
+        <br />
+        <button type="submit">Add</button>
+      </form>
+    </Form_style>
   );
 };
 // export const InputForm = () =>{
