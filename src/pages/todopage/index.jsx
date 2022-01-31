@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { Button, InputForm } from "../../components";
+import { InputForm, Item } from "../../components";
 import { Todo_style } from "./pagestyle";
+import { MdAdd } from "react-icons/md";
 
 export const TodoPage = () => {
   const [todos, setTodos] = useState([]);
+  //state for form handler
+  const [showForm, setShowForm] = useState(false);
 
   const addTodo = (input) => {
     setTodos((prevTodos) => {
@@ -16,24 +19,39 @@ export const TodoPage = () => {
       return prevTodos.filter((item, index) => index !== id);
     });
   };
-  console.log(todos);
+
+  const showFormHandler = (formDecision) => {
+    setShowForm(!formDecision);
+  };
+
   return (
     <Todo_style>
       <div className="wrapper">
         <h1>Todo App</h1>
+        <button className="showForm" onClick={() => showFormHandler(showForm)}>
+          <MdAdd />
+        </button>
 
-        <Button icon="add" />
+        {todos.map((item, index) => (
+          <Item
+            key={index}
+            title={item.todo}
+            desc={item.description}
+            id={index}
+            deleteTodo={deleteTodo}
+          />
+        ))}
 
-        <ul>
-          {todos.map((item, index) => (
-            <li key={index}>
-              {item.todo} <Button icon="delete" />
-            </li>
-          ))}
-        </ul>
-
-        <InputForm addTodo={addTodo} />
+        <InputForm
+          addTodo={addTodo}
+          // have to chg state after
+          showForm={showForm}
+          showFormHandler={showFormHandler}
+        />
       </div>
     </Todo_style>
   );
 };
+{
+  /* <Button icon="add" onClick={addFormHandler} /> */
+}

@@ -11,12 +11,13 @@ export const Todo_style = styled.div`
     border: 0;
     border-radius: 15px;
     padding: 3em;
+    min-width: 15em;
     box-shadow: 5px 10px 8px 10px #888888;
     h1,
-    Button {
+    .showForm {
       margin-bottom: 1.5em;
     }
-    Button {
+    .showForm {
       width: 100%;
     }
   }

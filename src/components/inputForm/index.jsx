@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form_style } from "./formStyles";
 
-export const InputForm = ({ addTodo }) => {
+export const InputForm = ({ addTodo, showForm, showFormHandler }) => {
   const [input, setInput] = useState({
     todo: "",
     description: "",
@@ -31,8 +31,13 @@ export const InputForm = ({ addTodo }) => {
     });
   };
 
+  const closeHandler = () => {
+    showFormHandler(showForm);
+  };
   return (
-    <Form_style >
+    <Form_style className={showForm && "active"}>
+      <div className="form-container" onClick={closeHandler}></div>
+
       <form onSubmit={submitHandler}>
         <input
           type="text"
@@ -42,6 +47,7 @@ export const InputForm = ({ addTodo }) => {
           placeholder="Add your new todo"
         />
         <br />
+
         <textarea
           value={input.description}
           onChange={handleChange}
@@ -49,6 +55,7 @@ export const InputForm = ({ addTodo }) => {
           placeholder="Description"
         ></textarea>
         <br />
+
         <button type="submit">Add</button>
       </form>
     </Form_style>
