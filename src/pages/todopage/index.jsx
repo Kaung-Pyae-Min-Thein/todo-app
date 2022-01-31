@@ -19,17 +19,21 @@ export const TodoPage = () => {
   console.log(todos);
   return (
     <Todo_style>
-      <h1>Todo App</h1>
-      <Button icon="add" />
-      <ul>
-        {todos.map((item, index) => (
-          <li key={index}>
-            {item.todo} <Button icon="delete" />
-          </li>
-        ))}
-      </ul>
+      <div className="wrapper">
+        <h1>Todo App</h1>
 
-      <InputForm addTodo={addTodo} />
+        <Button icon="add" />
+
+        <ul>
+          {todos.map((item, index) => (
+            <li key={index}>
+              {item.todo} <Button icon="delete" />
+            </li>
+          ))}
+        </ul>
+
+        <InputForm addTodo={addTodo} />
+      </div>
     </Todo_style>
   );
 };
