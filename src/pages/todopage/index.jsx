@@ -20,15 +20,16 @@ export const TodoPage = () => {
     });
   };
 
-  const showFormHandler = (formDecision) => {
-    setShowForm(!formDecision);
+  const showFormHandler = () => {
+    setShowForm(!showForm);
   };
 
   return (
     <Todo_style>
       <div className="wrapper">
         <h1>Todo App</h1>
-        <button className="showForm" onClick={() => showFormHandler(showForm)}>
+        
+        <button className="showForm" onClick={showFormHandler}>
           <MdAdd />
         </button>
 
