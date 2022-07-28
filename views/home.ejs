@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App with MongoDB</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+  <h1 id="heading" class="box">
+    <%= title %>
+  </h1>
+  <div class="box">
+    <ul>
+
+      <% items.forEach( (item)=>{ %>
+        <form action="/delete" method="post">
+          <li class="item">
+            <input type="checkbox" onchange="this.form.submit()" name="checkbox" value="<%= item._id %>">
+            <p>
+              <%= item.name %>
+            </p>
+          </li>
+          <input type="hidden" name="tabName" value="<%= title %>">
+        </form>
+
+        <% }) %>
+
+    </ul>
+
+    <form action=" /" method="post">
+      <input type="text" name="task" placeholder="Task">
+      <button type="submit" name="tabName" value="<%= title %>">+</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy;2022 Kaung Production
+  </footer>
+</body>
+
+</html>
