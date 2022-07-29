@@ -11,7 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //-----------------DB setup
-mongoose.connect("mongodb://localhost:27017/todoDB");
+mongoose.connect("mongodb+srv://kaungpyae:kaungpyae@cluster0.zgab3.mongodb.net/todoDB?retryWrites=true&w=majority");
+
+
 
 const itemSchema = new mongoose.Schema({
   name: String
